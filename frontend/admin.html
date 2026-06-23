@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin — Prestige Outdoors Supply</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Sometype+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/css/main.css?v=3" />
+  <style>
+    body { background:var(--paper); color:var(--bark); }
+    .a-header { background:var(--bark); color:#fff; border-bottom:3px solid var(--blaze); }
+    .a-header-inner { max-width:1240px; margin:0 auto; padding:14px 22px; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+    .a-brand { display:flex; align-items:center; gap:11px; }
+    .a-brand-word { font-family:var(--head); font-size:1.45rem; letter-spacing:.04em; color:#fff; line-height:1; }
+    .a-header-actions { display:flex; gap:10px; align-items:center; }
+    .a-header .btn-outline { background:transparent; color:#fff; border-color:#fff; box-shadow:3px 3px 0 rgba(0,0,0,.35); }
+    .a-header .btn-outline:hover { background:#fff; color:var(--bark); }
+
+    .a-wrap { max-width:1240px; margin:0 auto; padding:26px 22px 90px; }
+    .login-box { max-width:400px; margin:70px auto; }
+
+    .a-top { display:flex; align-items:flex-end; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-bottom:22px; }
+    .a-top h1 { font-family:var(--head); font-size:2.1rem; letter-spacing:.03em; margin:0; color:var(--bark); }
+    .a-top .sub { font-family:var(--label); font-size:.78rem; color:var(--bark2); text-transform:uppercase; letter-spacing:.06em; }
+
+    .stat-cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:16px; margin-bottom:24px; }
+    .stat-box { background:var(--card); border:2px solid var(--bark); border-radius:3px; box-shadow:5px 5px 0 var(--bark); padding:18px 20px; }
+    .stat-box .n { font-family:var(--head); font-size:2.6rem; color:var(--blaze); line-height:1; }
+    .stat-box .l { color:var(--bark2); font-family:var(--label); font-size:.78rem; text-transform:uppercase; letter-spacing:.06em; margin-top:6px; }
+
+    .tabs { display:flex; gap:10px; margin-bottom:18px; flex-wrap:wrap; }
+    .tab { font-family:var(--head); font-size:1.15rem; letter-spacing:.04em; text-transform:uppercase; padding:9px 20px; background:var(--card); color:var(--bark); border:2px solid var(--bark); border-radius:3px; box-shadow:2px 2px 0 var(--bark); cursor:pointer; }
+    .tab.active { background:var(--blaze); color:#fff; }
+    .tab .badge-n { font-family:var(--label); font-size:.85rem; opacity:.85; margin-left:6px; }
+
+    .panel { background:var(--card); border:2px solid var(--bark); border-radius:3px; box-shadow:6px 6px 0 var(--bark); overflow:hidden; margin-bottom:28px; }
+    .panel > h2 { font-family:var(--head); font-size:1.4rem; letter-spacing:.03em; margin:0; padding:16px 20px; border-bottom:2px solid var(--bark); background:var(--paper2); color:var(--bark); }
+    .a-scroll { overflow-x:auto; }
+    table.a { width:100%; border-collapse:collapse; font-size:.9rem; min-width:880px; }
+    table.a th, table.a td { text-align:left; padding:12px 14px; border-bottom:1px solid var(--line); vertical-align:top; color:var(--bark); }
+    table.a th { background:var(--paper2); font-family:var(--label); text-transform:uppercase; letter-spacing:.05em; font-size:.74rem; color:var(--bark2); font-weight:600; }
+    table.a tbody tr:hover { background:#fffdf8; }
+    table.a strong { color:var(--bark); font-weight:700; }
+    .sub-line { color:var(--bark2); font-size:.82rem; }
+    .item-chip { display:block; color:var(--bark); }
+    .empty { padding:30px 20px; color:var(--bark2); text-align:center; }
+
+    .status-pill { display:inline-block; padding:3px 10px; border-radius:2px; border:1.5px solid var(--bark); font-family:var(--label); font-size:.68rem; font-weight:600; text-transform:uppercase; letter-spacing:.04em; }
+    .st-pending { background:#fce7cf; color:#9a4a0c; }
+    .st-processing { background:#d7e6f2; color:#235273; }
+    .st-completed, .st-closed { background:#dcebd7; color:#2f5d3a; }
+    .st-cancelled { background:#f0d9d4; color:#9a3a2a; }
+    .st-new { background:#e3def0; color:#4a3f73; }
+    .st-contacted { background:#fce7cf; color:#9a4a0c; }
+
+    .row-actions { display:flex; gap:6px; white-space:nowrap; }
+    select.status-sel { font-family:var(--label); font-size:.78rem; padding:6px 8px; border:2px solid var(--bark); border-radius:2px; background:var(--card); color:var(--bark); width:auto; min-width:120px; }
+    .mini-btn { font-family:var(--label); text-transform:uppercase; font-size:.68rem; letter-spacing:.04em; padding:6px 10px; border:2px solid var(--bark); border-radius:2px; background:var(--card); color:var(--bark); box-shadow:2px 2px 0 var(--bark); cursor:pointer; }
+    .mini-btn:hover { transform:translate(-1px,-1px); box-shadow:3px 3px 0 var(--blaze); }
+    .mini-btn.danger { color:#fff; background:#b3392a; border-color:var(--bark); }
+    .mini-btn.danger:hover { box-shadow:3px 3px 0 var(--bark); background:#9a2f22; }
+
+    .detail-row td { background:var(--paper2); }
+    .detail-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px 24px; padding:6px 2px; }
+    .detail-grid .k { font-family:var(--label); text-transform:uppercase; font-size:.68rem; letter-spacing:.05em; color:var(--bark2); }
+    .detail-grid .v { color:var(--bark); font-size:.92rem; margin-top:2px; }
+    .detail-items { margin-top:10px; }
+    .detail-items table { width:100%; border-collapse:collapse; font-size:.85rem; }
+    .detail-items th, .detail-items td { text-align:left; padding:6px 8px; border-bottom:1px solid var(--line); color:var(--bark); }
+
+    .err { color:#b3392a; font-size:.85rem; margin-top:8px; }
+    .a-toast { position:fixed; bottom:22px; left:50%; transform:translateX(-50%) translateY(20px); opacity:0; transition:opacity .25s, transform .25s; background:var(--bark); color:#fff; border-left:5px solid var(--pine); padding:12px 20px; border-radius:3px; box-shadow:5px 5px 0 rgba(0,0,0,.3); font-size:.9rem; z-index:500; }
+    .a-toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
+    .a-toast.err { border-left-color:#b3392a; }
+    @media (max-width:560px){ .a-top h1{ font-size:1.7rem; } }
+  </style>
+</head>
+<body>
+<header class="a-header">
+  <div class="a-header-inner">
+    <div class="a-brand">
+      <span class="a-brand-word">Prestige Outdoors Supply</span>
+    </div>
+    <div class="a-header-actions">
+      <a href="/" class="btn-primary btn-sm">View Site</a>
+      <button class="btn-outline btn-sm" id="logout-btn" style="display:none">Log Out</button>
+    </div>
+  </div>
+</header>
+
+<!-- Login -->
+<div class="a-wrap" id="login-view">
+  <div class="form-card login-box">
+    <h2 class="form-card-title">Admin Login</h2>
+    <form id="login-form">
+      <label>Username<input type="text" id="admin-user" autocomplete="username" required /></label>
+      <label>Password<input type="password" id="admin-pass" autocomplete="current-password" required /></label>
+      <button type="submit" class="btn-primary btn-block" style="margin-top:10px">Sign In</button>
+      <p class="err hidden" id="login-err">Invalid credentials. Try again.</p>
+    </form>
+  </div>
+</div>
+
+<!-- Dashboard -->
+<div class="a-wrap hidden" id="dash-view">
+  <div class="a-top">
+    <div>
+      <h1>Orders &amp; Inquiries</h1>
+      <span class="sub">Manage quote requests, bookings &amp; messages</span>
+    </div>
+    <button class="btn-outline btn-sm" id="refresh-btn">Refresh</button>
+  </div>
+
+  <div class="stat-cards">
+    <div class="stat-box"><div class="n" id="stat-inq">0</div><div class="l">Order / Quote Requests</div></div>
+    <div class="stat-box"><div class="n" id="stat-book">0</div><div class="l">Bookings &amp; Messages</div></div>
+    <div class="stat-box"><div class="n" id="stat-pending">0</div><div class="l">Pending Orders</div></div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" data-tab="orders">Orders / Quotes <span class="badge-n" id="tab-inq-n">0</span></button>
+    <button class="tab" data-tab="bookings">Bookings &amp; Messages <span class="badge-n" id="tab-book-n">0</span></button>
+  </div>
+
+  <div class="panel" id="panel-orders">
+    <h2>Order / Quote Requests</h2>
+    <div class="a-scroll">
+      <table class="a" id="inq-table">
+        <thead><tr>
+          <th>#</th><th>Date</th><th>Customer</th><th>Contact</th><th>Items</th><th>Total</th><th>Payment</th><th>Status</th><th>Actions</th>
+        </tr></thead>
+        <tbody><tr><td colspan="9" class="empty">Loading…</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="panel hidden" id="panel-bookings">
+    <h2>Bookings &amp; Messages</h2>
+    <div class="a-scroll">
+      <table class="a" id="book-table">
+        <thead><tr>
+          <th>#</th><th>Date</th><th>Name</th><th>Contact</th><th>Service</th><th>Interest</th><th>Status</th><th>Actions</th>
+        </tr></thead>
+        <tbody><tr><td colspan="8" class="empty">Loading…</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="a-toast" id="a-toast"></div>
+
+<script>
+  let AUTH = sessionStorage.getItem('admin_auth') || '';
+  let STATUSES = { inquiries:['pending','processing','completed','cancelled'], bookings:['new','contacted','closed'] };
+
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const fmtDate = (iso) => { if(!iso) return '—'; const d = new Date(iso); return isNaN(d) ? '—' : d.toLocaleString(undefined,{month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit'}); };
+  const money = (n) => '$' + (Number(n)||0).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});
+
+  function toast(msg, isErr){ const t=$('a-toast'); t.textContent=msg; t.className='a-toast show'+(isErr?' err':''); clearTimeout(t._t); t._t=setTimeout(()=>{t.className='a-toast'+(isErr?' err':'');},2600); }
+  function showDash(show){ $('login-view').classList.toggle('hidden', show); $('dash-view').classList.toggle('hidden', !show); $('logout-btn').style.display = show ? '' : 'none'; }
+  function authHeaders(json){ const h={'Authorization':'Basic '+AUTH}; if(json) h['Content-Type']='application/json'; return h; }
+
+  async function loadData(){
+    const res = await fetch('/api/admin', { headers: authHeaders() });
+    if (res.status === 401) throw new Error('unauth');
+    if (!res.ok) throw new Error('error');
+    const data = await res.json();
+    if (data.statuses) STATUSES = data.statuses;
+    const inq = data.inquiries || [], book = data.bookings || [];
+    renderInquiries(inq);
+    renderBookings(book);
+    $('stat-inq').textContent = inq.length;
+    $('stat-book').textContent = book.length;
+    $('stat-pending').textContent = inq.filter(r => (r.status||'pending')==='pending').length;
+    $('tab-inq-n').textContent = inq.length;
+    $('tab-book-n').textContent = book.length;
+  }
+
+  function statusSelect(kind, id, current, options){
+    const opts = options.map(o => `<option value="${esc(o)}" ${o===current?'selected':''}>${esc(o)}</option>`).join('');
+    return `<select class="status-sel" onchange="setStatus('${kind}',${id},this.value)">${opts}</select>`;
+  }
+  function actionsCell(kind, id){
+    return `<div class="row-actions">
+      <button class="mini-btn" onclick="toggleDetail('${kind}',${id})">View</button>
+      <button class="mini-btn danger" onclick="del('${kind}',${id})">Delete</button>
+    </div>`;
+  }
+
+  function renderInquiries(rows){
+    const tb = $('inq-table').querySelector('tbody');
+    if (!rows.length){ tb.innerHTML = '<tr><td colspan="9" class="empty">No order/quote requests yet.</td></tr>'; return; }
+    tb.innerHTML = rows.map(r => {
+      const items = (r.items||[]).map(it => `<span class="item-chip">${esc(it.name)} ×${esc(it.qty||1)}</span>`).join('') || '<span class="sub-line">—</span>';
+      const loc = [r.city, r.state].filter(Boolean).join(', ');
+      const st = r.status || 'pending';
+      const detail = `
+        <tr class="detail-row hidden" id="det-inquiries-${r.id}"><td colspan="9">
+          <div class="detail-grid">
+            <div><div class="k">Full name</div><div class="v">${esc(r.name||'—')}</div></div>
+            <div><div class="k">Email</div><div class="v">${esc(r.email||'—')}</div></div>
+            <div><div class="k">Phone</div><div class="v">${esc(r.phone||'—')}</div></div>
+            <div><div class="k">Preferred contact</div><div class="v">${esc(r.contact_pref||'—')} · ${esc(r.best_time||'—')}</div></div>
+            <div><div class="k">Company</div><div class="v">${esc(r.company||'—')}</div></div>
+            <div><div class="k">Address</div><div class="v">${esc([r.address,r.city,r.state,r.zip].filter(Boolean).join(', ')||'—')}</div></div>
+            <div><div class="k">Country / Freight</div><div class="v">${esc(r.country||'—')}${r.freight_region?(' · '+esc(r.freight_region)):''}</div></div>
+            <div><div class="k">Payment</div><div class="v">${esc(r.payment_method||'—')}</div></div>
+            <div style="grid-column:1/-1"><div class="k">Notes</div><div class="v">${esc(r.notes||'—')}</div></div>
+          </div>
+          <div class="detail-items"><table><thead><tr><th>Item</th><th>Qty</th><th>Price</th><th>Line</th></tr></thead><tbody>
+            ${(r.items||[]).map(it=>`<tr><td>${esc(it.name)}</td><td>${esc(it.qty||1)}</td><td>${money(it.price)}</td><td>${money((it.price||0)*(it.qty||1))}</td></tr>`).join('') || '<tr><td colspan="4">No items listed</td></tr>'}
+            <tr><td colspan="3" style="text-align:right"><strong>Estimated total</strong></td><td><strong>${money(r.total)}</strong></td></tr>
+          </tbody></table></div>
+        </td></tr>`;
+      return `<tr>
+        <td>${esc(r.id)}</td>
+        <td>${esc(fmtDate(r.created_at))}</td>
+        <td><strong>${esc(r.name||'—')}</strong>${loc?`<br><span class="sub-line">${esc(loc)}</span>`:''}</td>
+        <td>${esc(r.phone||'')}<br><span class="sub-line">${esc(r.email||'')}</span></td>
+        <td>${items}</td>
+        <td><strong>${money(r.total)}</strong></td>
+        <td>${esc(r.payment_method||'—')}</td>
+        <td><div><span class="status-pill st-${esc(st)}">${esc(st)}</span></div><div style="margin-top:6px">${statusSelect('inquiries',r.id,st,STATUSES.inquiries)}</div></td>
+        <td>${actionsCell('inquiries',r.id)}</td>
+      </tr>${detail}`;
+    }).join('');
+  }
+
+  function renderBookings(rows){
+    const tb = $('book-table').querySelector('tbody');
+    if (!rows.length){ tb.innerHTML = '<tr><td colspan="8" class="empty">No bookings or messages yet.</td></tr>'; return; }
+    tb.innerHTML = rows.map(r => {
+      const st = r.status || 'new';
+      const detail = `
+        <tr class="detail-row hidden" id="det-bookings-${r.id}"><td colspan="8">
+          <div class="detail-grid">
+            <div><div class="k">Name</div><div class="v">${esc(r.name||'—')}</div></div>
+            <div><div class="k">Email</div><div class="v">${esc(r.email||'—')}</div></div>
+            <div><div class="k">Phone</div><div class="v">${esc(r.phone||'—')}</div></div>
+            <div><div class="k">Service</div><div class="v">${esc(r.service||'—')}</div></div>
+            <div><div class="k">Product interest</div><div class="v">${esc(r.product_interest||'—')}</div></div>
+            <div style="grid-column:1/-1"><div class="k">Message / details</div><div class="v">${esc(r.details||'—')}</div></div>
+          </div>
+        </td></tr>`;
+      return `<tr>
+        <td>${esc(r.id)}</td>
+        <td>${esc(fmtDate(r.created_at))}</td>
+        <td><strong>${esc(r.name||'—')}</strong></td>
+        <td>${esc(r.phone||'')}<br><span class="sub-line">${esc(r.email||'')}</span></td>
+        <td>${esc(r.service||'—')}</td>
+        <td>${esc(r.product_interest||'—')}</td>
+        <td><div><span class="status-pill st-${esc(st)}">${esc(st)}</span></div><div style="margin-top:6px">${statusSelect('bookings',r.id,st,STATUSES.bookings)}</div></td>
+        <td>${actionsCell('bookings',r.id)}</td>
+      </tr>${detail}`;
+    }).join('');
+  }
+
+  // ---- actions ----
+  window.toggleDetail = function(kind, id){ const el = $('det-'+kind+'-'+id); if (el) el.classList.toggle('hidden'); };
+
+  window.setStatus = async function(kind, id, status){
+    try {
+      const res = await fetch(`/api/admin/${kind}/${id}`, { method:'PATCH', headers:authHeaders(true), body:JSON.stringify({status}) });
+      if (!res.ok) throw new Error('failed');
+      toast('Status updated to "'+status+'"');
+      loadData().catch(()=>{});
+    } catch(e){ toast('Could not update status', true); loadData().catch(()=>{}); }
+  };
+
+  window.del = async function(kind, id){
+    const label = kind==='inquiries' ? 'order/quote request' : 'booking';
+    if (!confirm('Delete this '+label+' (#'+id+')? This cannot be undone.')) return;
+    try {
+      const res = await fetch(`/api/admin/${kind}/${id}`, { method:'DELETE', headers:authHeaders() });
+      if (!res.ok) throw new Error('failed');
+      toast('Deleted #'+id);
+      loadData().catch(()=>{});
+    } catch(e){ toast('Could not delete', true); }
+  };
+
+  // ---- tabs ----
+  document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+    t.classList.add('active');
+    const tab = t.getAttribute('data-tab');
+    $('panel-orders').classList.toggle('hidden', tab !== 'orders');
+    $('panel-bookings').classList.toggle('hidden', tab !== 'bookings');
+  }));
+
+  // ---- auth ----
+  $('login-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    $('login-err').classList.add('hidden');
+    AUTH = btoa($('admin-user').value + ':' + $('admin-pass').value);
+    try { await loadData(); sessionStorage.setItem('admin_auth', AUTH); showDash(true); }
+    catch (err) { $('login-err').classList.remove('hidden'); }
+  });
+  $('refresh-btn').addEventListener('click', () => loadData().then(()=>toast('Refreshed')).catch(()=>{}));
+  $('logout-btn').addEventListener('click', () => { sessionStorage.removeItem('admin_auth'); AUTH=''; showDash(false); });
+
+  if (AUTH) { loadData().then(() => showDash(true)).catch(() => { sessionStorage.removeItem('admin_auth'); AUTH=''; showDash(false); }); }
+</script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %}About — {{ BUSINESS.name }}{% endblock %}
+{% block meta_desc %}{{ BUSINESS.name }} — built-to-last hunting blinds, stands, towers & field gear, shipped nationwide with real phone & email support.{% endblock %}
+
+{% block content %}
+<!-- About hero -->
+<section class="about-hero">
+  <div class="wrap">
+    <span class="hero-eyebrow reveal"><span class="hero-tick"></span>Our Story</span>
+    <h1 class="about-hero-title reveal">Built By Hunters,<br /><span class="blaze">For Hunters.</span></h1>
+    <p class="about-hero-sub reveal">We build and source blinds, stands, and gear we'd stake our own season on — and ship them anywhere the deer roam.</p>
+  </div>
+</section>
+
+<!-- Who we are -->
+<section class="section">
+  <div class="wrap about-grid">
+    <div class="about-text reveal-l">
+      <div class="section-eyebrow">Who We Are</div>
+      <h2 class="section-title">More Stand Time.<br />Less Hassle.</h2>
+      <p>{{ BUSINESS.name }} started with a simple frustration: blinds that leaked, rattled, and rusted out after a season or two. So we set out to offer the gear we actually wanted — welded steel and maintenance-free blinds, rock-solid towers, and the optics, cameras, feeders, and field gear that round out a serious hunt.</p>
+      <p>Today we ship nationwide from {{ BUSINESS.address }} — from a one-hunter ground blind to a 6'×8' family tower package. Whether you're outfitting a new lease or replacing a tired pop-up, we'll help you size it right and get it to your gate.</p>
+      <a href="/products" class="btn-primary btn-lg">Shop The Catalog</a>
+    </div>
+    <div class="about-values reveal-r">
+      <div class="value-item"><h3>Built To Last</h3><p>Materials and brands that survive real weather and real seasons.</p></div>
+      <div class="value-item"><h3>Honest Help</h3><p>We hunt. Call us and you'll talk to someone who's sat in these blinds.</p></div>
+      <div class="value-item"><h3>Ships Anywhere</h3><p>Crated and freighted to all 50 states, with international freight on request.</p></div>
+      <div class="value-item"><h3>Financing</h3><p>Spread the cost of a full setup over terms that fit your budget.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Stats strip -->
+<section class="why-band">
+  <div class="wrap">
+    <div class="countup stagger">
+      <div class="count-item"><span class="count-num" data-count="100" data-plus="1">0</span><span class="count-label">Products In Stock</span></div>
+      <div class="count-item"><span class="count-num" data-count="50">0</span><span class="count-label">States Shipped</span></div>
+      <div class="count-item"><span class="count-num" data-count="9">0</span><span class="count-label">Gear Categories</span></div>
+      <div class="count-item"><span class="count-num" data-count="12">0</span><span class="count-label">Seasons Field-Tested</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section">
+  <div class="wrap">
+    <div class="cta-band reveal-scale">
+      <div class="cta-inner">
+        <div>
+          <h2 class="cta-title">Let's Get You In The Timber.</h2>
+          <p class="cta-sub">Questions on sizing a blind, picking a tower height, or freight to your gate? Reach out — real people who hunt will help.</p>
+        </div>
+        <div class="cta-actions">
+          <a href="tel:{{ BUSINESS.phone }}" class="btn-light btn-lg">Call {{ BUSINESS.phone }}</a>
+          <button class="btn-outline btn-lg btn-outline-light" data-quote-open type="button">Get a Quote</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+{% from "_card.html" import card %}
+{% block title %}{{ BUSINESS.name }} — Hunting Blinds, Stands & Gear{% endblock %}
+
+{% set ico_svg = "viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'" %}
+{% set cat_icons = {
+  "deer-blinds-stands": "<svg " ~ ico_svg ~ "><rect x='6' y='3' width='12' height='9' rx='1'/><path d='M8 7h3'/><path d='M7 12l-3 9M17 12l3 9M9 12v9M15 12v9'/></svg>",
+  "optics": "<svg " ~ ico_svg ~ "><circle cx='7' cy='14' r='4'/><circle cx='17' cy='14' r='4'/><path d='M7 10V6a1 1 0 0 1 1-1h1M17 10V6a1 1 0 0 0-1-1h-1M11 14h2'/></svg>",
+  "trail-cameras": "<svg " ~ ico_svg ~ "><rect x='3' y='7' width='18' height='12' rx='2'/><circle cx='12' cy='13' r='3'/><path d='M8 7l1.5-2h5L16 7'/></svg>",
+  "hunting-accessories": "<svg " ~ ico_svg ~ "><circle cx='12' cy='12' r='8'/><circle cx='12' cy='12' r='2.5'/><path d='M12 1v4M12 19v4M1 12h4M19 12h4'/></svg>",
+  "scent-attractants": "<svg " ~ ico_svg ~ "><path d='M12 3s6 6.5 6 10.5a6 6 0 0 1-12 0C6 9.5 12 3 12 3z'/><path d='M10 13a2 2 0 0 0 2 2'/></svg>",
+  "feeders": "<svg " ~ ico_svg ~ "><path d='M5 4h14l-2 7H7L5 4z'/><path d='M8 11l-1 4.5A2 2 0 0 0 9 18h6a2 2 0 0 0 2-2.5L16 11'/><path d='M12 18v3M10.5 21h3'/></svg>",
+  "clothing-gear": "<svg " ~ ico_svg ~ "><path d='M9 4l3 2 3-2 5 3-2 3-2-1v10a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1V9L6 10 4 7l5-3z'/></svg>",
+  "field-equipment": "<svg " ~ ico_svg ~ "><rect x='6' y='7' width='12' height='14' rx='3'/><path d='M9 7V5a3 3 0 0 1 6 0v2'/><rect x='9.5' y='12' width='5' height='4' rx='1'/></svg>",
+  "navigation-safety": "<svg " ~ ico_svg ~ "><circle cx='12' cy='12' r='9'/><path d='M15.5 8.5l-2 5.5-5 2 2-5.5 5-2z'/></svg>"
+} %}
+
+{% block content %}
+<!-- 3 · HERO -->
+<section class="hero">
+  <img class="hero-photo" src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1920&q=70"
+       alt="" aria-hidden="true" data-parallax="0.18" onerror="this.style.display='none'" />
+  <div class="hero-overlay" aria-hidden="true"></div>
+  <div class="wrap hero-inner">
+    <span class="hero-eyebrow reveal"><span class="hero-tick"></span>Field-Tested · Built to Last</span>
+    <h1 class="hero-title reveal">Hunt Smarter.<br /><span class="blaze">Stay Hidden.</span></h1>
+    <p class="hero-sub reveal">Premium deer blinds, towers, ground blinds and gear — sealed against weather and a whitetail's nose. Shipped nationwide, financing available.</p>
+    <div class="hero-actions reveal">
+      <a href="/products?category=deer-blinds-stands" class="btn-primary btn-lg">Shop Blinds</a>
+      <button class="btn-outline btn-lg btn-outline-light" data-quote-open type="button">Get a Quote</button>
+    </div>
+    <div class="hero-stats stagger">
+      <div class="stat"><span class="stat-num">100+</span><span class="stat-label">Products</span></div>
+      <div class="stat"><span class="stat-num">{{ num_categories }}</span><span class="stat-label">Categories</span></div>
+      <div class="stat"><span class="stat-num">{{ num_states }}</span><span class="stat-label">States Shipped</span></div>
+      <div class="stat"><span class="stat-num">24/7</span><span class="stat-label">Online Quotes</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 · TRUST BADGES -->
+<div class="trust-bar">
+  <div class="wrap trust-bar-inner">
+    <span class="trust-badge">Ships Nationwide</span>
+    <span class="trust-badge">Financing Available</span>
+    <span class="trust-badge">Field-Tested Brands</span>
+    <span class="trust-badge">Built to Last</span>
+    <span class="trust-badge">Call &amp; Email Support</span>
+  </div>
+</div>
+
+<!-- 5 · SHOP BY CATEGORY -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head reveal-l">
+      <div>
+        <div class="section-eyebrow">Everything For The Hunt</div>
+        <h2 class="section-title">Shop By Category</h2>
+      </div>
+      <a href="/products" class="see-all">Browse all gear &rsaquo;</a>
+    </div>
+    <div class="cat-grid stagger">
+      {% for slug, label in CATEGORY_LABELS.items() %}
+      <a class="cat-card" href="/products?category={{ slug }}">
+        <span class="cat-ico" aria-hidden="true">{{ cat_icons.get(slug, "") | safe }}</span>
+        <span class="cat-card-label">{{ label }}</span>
+        <span class="cat-card-count">{{ category_counts.get(slug, 0) }} products &rsaquo;</span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- 6 · FEATURE / PARALLAX SPLIT -->
+<section class="feature section-alt">
+  <div class="wrap feature-inner">
+    <div class="feature-text reveal-l">
+      <div class="section-eyebrow">The Ridgeline Standard</div>
+      <h2 class="feature-h2">Sealed tight.<br /><span class="blaze">Scent-locked.</span><br />Weatherproof.</h2>
+      <p>Every blind we ship is built to disappear into the timber and stand up to seasons of wind, rain, and hard freezes. Welded steel frames, baked-on camo coatings, and silent tinted windows keep you hidden when it counts.</p>
+      <p>From hub-style ground blinds to 6×6 box blinds on 10-foot towers, each setup is crated, shipped nationwide, and backed by people who actually hunt.</p>
+      <a href="/products?category=deer-blinds-stands" class="btn-primary btn-lg">Explore the Blinds</a>
+    </div>
+    <div class="feature-media reveal-r">
+      <div class="feature-frame">
+        <img class="feature-photo" data-parallax="0.12"
+             src="https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=1200&q=70"
+             alt="Forest hunting country" onerror="this.style.display='none';this.parentNode.classList.add('no-photo');" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 · BEST SELLERS -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head reveal-l">
+      <div>
+        <div class="section-eyebrow">Most Requested</div>
+        <h2 class="section-title">Best-Selling Blinds &amp; Gear</h2>
+      </div>
+      <a href="/products?category=deer-blinds-stands" class="see-all">Shop all blinds &rsaquo;</a>
+    </div>
+    <div class="grid stagger">
+      {% for p in featured %}
+        {{ card(p) }}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- 8 · WHY HUNTERS CHOOSE US (count-up) -->
+<section class="why-band">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <div>
+        <div class="section-eyebrow center light">The Difference</div>
+        <h2 class="section-title light">Why Hunters Choose Us</h2>
+      </div>
+    </div>
+    <div class="countup stagger">
+      <div class="count-item"><span class="count-num" data-count="100" data-plus="1">0</span><span class="count-label">Products In Stock</span></div>
+      <div class="count-item"><span class="count-num" data-count="{{ num_states }}">0</span><span class="count-label">States Shipped</span></div>
+      <div class="count-item"><span class="count-num" data-count="{{ num_categories }}">0</span><span class="count-label">Gear Categories</span></div>
+      <div class="count-item"><span class="count-num" data-count="12">0</span><span class="count-label">Seasons Field-Tested</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 9 · CTA BAND -->
+<section class="section">
+  <div class="wrap">
+    <div class="cta-band reveal-scale">
+      <div class="cta-inner">
+        <div>
+          <h2 class="cta-title">Ready to Gear Up?</h2>
+          <p class="cta-sub">Talk to people who hunt. We'll help you size a blind, pick a tower height, and quote freight to your door — no showroom required.</p>
+        </div>
+        <div class="cta-actions">
+          <a href="tel:{{ BUSINESS.phone }}" class="btn-light btn-lg">Call {{ BUSINESS.phone }}</a>
+          <button class="btn-outline btn-lg btn-outline-light" data-quote-open type="button">Get a Quote Online</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

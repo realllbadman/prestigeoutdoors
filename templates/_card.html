@@ -1,0 +1,45 @@
+{% macro card(p) %}
+{% set chips = (p.model_number or '').split('·') %}
+<article class="card reveal" data-category="{{ p.category }}" data-subcategory="{{ p.subcategory }}" data-price="{{ p.price }}">
+  <a class="card-overlay-link" href="/products/{{ p.slug }}" aria-label="{{ p.name }}"></a>
+
+  <div class="card-media">
+    {% if p.badge %}<span class="badge badge-{{ p.badge | lower | replace(' ', '-') }}">{{ p.badge }}</span>{% endif %}
+    {% if not p.in_stock %}<span class="badge badge-out">Sold Out</span>{% endif %}
+    <img src="{{ img_url(p.image) }}" alt="{{ p.name }}" loading="lazy"
+         onerror="this.onerror=null;this.src='/static/images/placeholder.jpg';" />
+  </div>
+
+  <div class="card-body">
+    {% if p.brand %}<div class="card-brand">{{ p.brand }}</div>{% endif %}
+    <h3 class="card-name">{{ p.name }}</h3>
+
+    {% if chips and chips[0] %}
+    <div class="card-chips">
+      {% for c in chips[:3] %}
+        {% if c.strip() %}<span class="spec-chip">{{ c.strip() }}</span>{% endif %}
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="card-foot">
+      <div class="card-price">
+        {% if p.original_price and p.original_price > p.price %}
+          <span class="price-was">${{ '{:,.0f}'.format(p.original_price) }}</span>
+        {% endif %}
+        <span class="price-now">${{ '{:,.0f}'.format(p.price) }}{% if p.price_max %}<span class="price-plus">+</span>{% endif %}</span>
+      </div>
+      <button class="add-btn" type="button"
+              data-add-cart
+              data-slug="{{ p.slug }}"
+              data-name="{{ p.name }}"
+              data-price="{{ p.price }}"
+              data-image="{{ p.image }}"
+              aria-label="Add {{ p.name }} to cart">
+        Add
+      </button>
+    </div>
+    <a class="card-view" href="/products/{{ p.slug }}">View Details</a>
+  </div>
+</article>
+{% endmacro %}

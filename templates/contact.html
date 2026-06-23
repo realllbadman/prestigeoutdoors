@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block title %}Contact Us — {{ BUSINESS.name }}{% endblock %}
+
+{% block content %}
+<div class="wrap">
+  <nav class="crumbs"><a href="/">Home</a> <span>/</span> <span class="crumb-now">Contact</span></nav>
+  <header class="listing-head">
+    <h1 class="listing-title">Contact Us</h1>
+    <p class="listing-count">Questions about sizing a blind, picking a tower height, freight, or financing? Reach out — real people who hunt will help.</p>
+  </header>
+
+  <div class="contact-layout">
+    <aside class="contact-info">
+      <div class="contact-block">
+        <h3>Call</h3>
+        <a href="tel:{{ BUSINESS.phone }}" class="contact-big">{{ BUSINESS.phone }}</a>
+        <p class="muted">{{ BUSINESS.hours }}</p>
+      </div>
+      <div class="contact-block">
+        <h3>Email</h3>
+        <a href="mailto:{{ BUSINESS.email }}" class="contact-big wrap-any">{{ BUSINESS.email }}</a>
+        <p class="muted">We reply within one business day.</p>
+      </div>
+      <div class="contact-block">
+        <h3>Visit / Ship From</h3>
+        <p class="contact-addr">{{ BUSINESS.address }}</p>
+        <p class="muted">Ships nationwide — freight quoted to your door.</p>
+      </div>
+    </aside>
+
+    <section class="form-card contact-card">
+      <h2 class="form-card-title">Send a Message</h2>
+      <form id="contact-form">
+        <div class="form-row">
+          <label>First name *<input type="text" name="first_name" required /></label>
+          <label>Last name<input type="text" name="last_name" /></label>
+        </div>
+        <div class="form-row">
+          <label>Phone<input type="tel" name="phone" /></label>
+          <label>Email *<input type="email" name="email" required /></label>
+        </div>
+        <label>What's this about?
+          <select name="service">
+            <option value="General Inquiry">General Inquiry</option>
+            <option value="Product Question">Product Question</option>
+            <option value="Blind Sizing Help">Blind Sizing Help</option>
+            <option value="Install / Delivery">Install / Delivery</option>
+            <option value="Freight Quote">Freight Quote</option>
+            <option value="Financing">Financing</option>
+          </select>
+        </label>
+        <label>Product of interest (optional)
+          <input type="text" name="product_interest" placeholder="e.g. 5'×5' Insulated Hunting Blind" />
+        </label>
+        <label>Message *
+          <textarea name="details" rows="4" required placeholder="How can we help?"></textarea>
+        </label>
+        <button type="submit" class="btn-primary btn-lg btn-block">Send Message</button>
+      </form>
+      <div class="form-success hidden" id="contact-success">
+        <h3>Message sent!</h3>
+        <p>Thanks for reaching out — we'll get back to you within one business day.</p>
+      </div>
+    </section>
+  </div>
+</div>
+{% endblock %}

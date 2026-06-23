@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% block title %}Financing — {{ BUSINESS.name }}{% endblock %}
+
+{% block content %}
+<div class="wrap">
+  <nav class="crumbs"><a href="/">Home</a> <span>/</span> <span class="crumb-now">Financing</span></nav>
+  <header class="listing-head">
+    <h1 class="listing-title">Financing Your Setup</h1>
+    <p class="listing-count">Get the blind, tower &amp; gear you want now and pay over time. Estimate a monthly payment, then apply below.</p>
+  </header>
+
+  <div class="financing-layout">
+    <!-- Calculator -->
+    <section class="calc-card">
+      <h2 class="form-card-title">Monthly Payment Calculator</h2>
+      <div class="calc-field">
+        <label for="calc-price">Purchase price</label>
+        <div class="calc-input-money"><span>$</span><input type="number" id="calc-price" min="0" step="50" value="3199" /></div>
+      </div>
+      <div class="calc-field">
+        <label for="calc-down">Down payment <span class="calc-fixed">(fixed)</span></label>
+        <div class="calc-input-money"><span>$</span><input type="number" id="calc-down" value="500" readonly /></div>
+      </div>
+      <div class="calc-field">
+        <label for="calc-apr">APR — <span id="calc-apr-val">9.9</span>%</label>
+        <input type="range" id="calc-apr" min="0" max="29.9" step="0.1" value="9.9" />
+      </div>
+      <div class="calc-field">
+        <label for="calc-term">Term — <span id="calc-term-val">36</span> months</label>
+        <input type="range" id="calc-term" min="6" max="60" step="6" value="36" />
+      </div>
+
+      <div class="calc-result">
+        <span class="calc-result-label">Estimated monthly payment</span>
+        <span class="calc-result-amount" id="calc-monthly">$0</span>
+        <div class="calc-breakdown">
+          <span>Financed: <strong id="calc-financed">$0</strong></span>
+          <span>Total of payments: <strong id="calc-total">$0</strong></span>
+          <span>Total interest: <strong id="calc-interest">$0</strong></span>
+        </div>
+      </div>
+      <p class="calc-disclaimer">Estimate only. Final terms depend on credit approval and lender. Not a commitment to lend.</p>
+    </section>
+
+    <!-- Application -->
+    <section class="form-card apply-card">
+      <h2 class="form-card-title">Financing Pre-Application</h2>
+      <p class="form-helper">Submit your interest and we'll follow up with financing options for your build. No hard credit pull to inquire.</p>
+      <form id="financing-form">
+        <div class="form-row">
+          <label>First name *<input type="text" name="first_name" required /></label>
+          <label>Last name<input type="text" name="last_name" /></label>
+        </div>
+        <div class="form-row">
+          <label>Phone *<input type="tel" name="phone" required /></label>
+          <label>Email *<input type="email" name="email" required /></label>
+        </div>
+        <label>What are you looking to finance?
+          <input type="text" name="product_interest" id="financing-interest"
+                 placeholder="e.g. 6'×6' Tower Blind Package + 10-ft tower" />
+        </label>
+        <label>Estimated budget / details
+          <textarea name="details" rows="3" placeholder="Budget, desired monthly payment, timeline…"></textarea>
+        </label>
+        <input type="hidden" name="service" value="Financing Application" />
+        <button type="submit" class="btn-primary btn-lg btn-block">Submit Pre-Application</button>
+      </form>
+      <div class="form-success hidden" id="financing-success">
+        <h3>Application received!</h3>
+        <p>Thanks — we'll be in touch shortly with financing options for your setup.</p>
+      </div>
+    </section>
+  </div>
+
+  <section class="fin-faq">
+    <h2 class="section-title">Financing FAQ</h2>
+    <div class="faq-grid">
+      <div class="faq"><h4>How much can I finance?</h4><p>Most blind, tower, and gear packages qualify. Use the calculator to estimate a payment, then apply for your exact build.</p></div>
+      <div class="faq"><h4>Will applying hurt my credit?</h4><p>Inquiring won't affect your score. Any hard pull only happens with a full lender application you approve.</p></div>
+      <div class="faq"><h4>How long are terms?</h4><p>Terms typically run 6 to 60 months depending on amount and approval. You pick what fits your budget.</p></div>
+      <div class="faq"><h4>Do you take a down payment?</h4><p>A down payment lowers your monthly cost and interest, but isn't always required. We'll walk you through options.</p></div>
+    </div>
+  </section>
+</div>
+{% endblock %}

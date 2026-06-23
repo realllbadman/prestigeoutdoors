@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+{% block title %}Request Your Order / Quote — {{ BUSINESS.name }}{% endblock %}
+
+{% block content %}
+<div class="wrap">
+  <nav class="crumbs"><a href="/">Home</a> <span>/</span> <span class="crumb-now">Checkout</span></nav>
+  <header class="listing-head">
+    <h1 class="listing-title">Request Your Order / Quote</h1>
+    <p class="listing-count">No online payment — submit your request and we'll contact you to finalize availability, freight &amp; payment.</p>
+  </header>
+
+  <div class="checkout-layout" id="checkout-root">
+    <!-- Form -->
+    <form class="checkout-form" id="checkout-form">
+      <section class="form-card">
+        <h2 class="form-card-title">Your Details</h2>
+        <div class="form-row">
+          <label>First name *<input type="text" name="first_name" required /></label>
+          <label>Last name<input type="text" name="last_name" /></label>
+        </div>
+        <div class="form-row">
+          <label>Phone *<input type="tel" name="phone" required placeholder="(555) 123-4567" /></label>
+          <label>Email *<input type="email" name="email" required placeholder="you@email.com" /></label>
+        </div>
+        <label>Company / Outfit (optional)<input type="text" name="company" /></label>
+      </section>
+
+      <section class="form-card">
+        <h2 class="form-card-title">Shipping Destination</h2>
+        <label>Country / Region *
+          <select name="country" id="country-select" required>
+            {% for region in FREIGHT_REGIONS.keys() %}
+            <option value="{{ region }}">{{ region }}</option>
+            {% endfor %}
+          </select>
+        </label>
+        <label>Street address<input type="text" name="address" placeholder="Street, route, or delivery point" /></label>
+        <div class="form-row">
+          <label id="state-field">State
+            <select name="state" id="state-select">
+              <option value="">Select state…</option>
+              {% for s in US_STATES %}<option value="{{ s }}">{{ s }}</option>{% endfor %}
+            </select>
+          </label>
+          <label>City<input type="text" name="city" /></label>
+        </div>
+        <div class="form-row">
+          <label>ZIP / Postal code<input type="text" name="zip" /></label>
+          <label>Freight region
+            <input type="text" name="freight_region" id="freight-region" readonly />
+          </label>
+        </div>
+      </section>
+
+      <section class="form-card">
+        <h2 class="form-card-title">How Should We Reach You?</h2>
+        <div class="radio-row" role="radiogroup" aria-label="Preferred contact method">
+          <label class="radio-pill"><input type="radio" name="contact_pref" value="Phone Call" checked /><span>Phone Call</span></label>
+          <label class="radio-pill"><input type="radio" name="contact_pref" value="Text (SMS)" /><span>Text (SMS)</span></label>
+          <label class="radio-pill"><input type="radio" name="contact_pref" value="Email" /><span>Email</span></label>
+        </div>
+        <p class="form-helper">We'll use this to confirm availability, freight cost, and how you'd like to pay.</p>
+        <label>Best time to reach you
+          <select name="best_time">
+            <option value="Anytime">Anytime</option>
+            <option value="Morning (8am–12pm)">Morning (8am–12pm)</option>
+            <option value="Afternoon (12pm–5pm)">Afternoon (12pm–5pm)</option>
+            <option value="Evening (5pm–8pm)">Evening (5pm–8pm)</option>
+          </select>
+        </label>
+      </section>
+
+      <section class="form-card">
+        <h2 class="form-card-title">Preferred Payment Method</h2>
+        <div class="radio-row" role="radiogroup" aria-label="Payment method">
+          <label class="radio-pill"><input type="radio" name="payment_method" value="Bank Transfer" checked /><span>Bank Transfer</span></label>
+          <label class="radio-pill"><input type="radio" name="payment_method" value="Zelle" /><span>Zelle</span></label>
+          <label class="radio-pill"><input type="radio" name="payment_method" value="PayPal" /><span>PayPal</span></label>
+          <label class="radio-pill"><input type="radio" name="payment_method" value="Other" /><span>Other</span></label>
+        </div>
+        <label id="payment-other-field" class="hidden">Tell us how you'd like to pay
+          <input type="text" name="payment_other" placeholder="e.g. Check, financing, cash on delivery" />
+        </label>
+        <label>Install / delivery notes (optional)
+          <textarea name="notes" rows="3" placeholder="Tower height, gate codes, install help, delivery access, questions…"></textarea>
+        </label>
+      </section>
+
+      <button type="submit" class="btn-primary btn-lg btn-block" id="checkout-submit">Submit Request</button>
+      <p class="form-fineprint">By submitting you agree to be contacted about this request. No payment is taken online.</p>
+    </form>
+
+    <!-- Order summary -->
+    <aside class="order-summary">
+      <h2 class="form-card-title">Order Summary</h2>
+      <div id="summary-items" class="summary-items"><!-- JS fills --></div>
+      <div class="summary-line"><span>Subtotal</span><span id="summary-subtotal">$0.00</span></div>
+      <div class="summary-line"><span id="summary-ship-label">Shipping</span><span id="summary-shipping">—</span></div>
+      <div class="summary-line summary-total"><span>Estimated total</span><span id="summary-total">$0.00</span></div>
+      <p class="summary-note">Totals are estimates. Freight on large blinds &amp; towers is quoted to your address — we'll confirm before any payment.</p>
+      <a href="/products" class="btn-outline btn-block">Add More Items</a>
+    </aside>
+  </div>
+
+  <!-- Success state (revealed by JS) -->
+  <div class="checkout-success hidden" id="checkout-success">
+    <div class="success-ico" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>
+    </div>
+    <h2>Request Received!</h2>
+    <p>Thanks — your request is in. We'll contact you to finalize availability, freight &amp; payment. Check your email for a copy of your details.</p>
+    <div class="success-actions">
+      <a href="/products" class="btn-primary">Keep Browsing</a>
+      <a href="/" class="btn-outline">Back Home</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

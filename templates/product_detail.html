@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% from "_card.html" import card %}
+{% block title %}{{ product.name }} — {{ BUSINESS.name }}{% endblock %}
+{% block meta_desc %}{{ product.description[:150] }}{% endblock %}
+
+{% block content %}
+{% set chips = (product.model_number or '').split('·') %}
+{% set monthly = ((product.price - 500) / 36) %}
+<div class="wrap">
+  <nav class="crumbs">
+    <a href="/">Home</a> <span>/</span>
+    <a href="/products?category={{ product.category }}">{{ category_label }}</a> <span>/</span>
+    <span class="crumb-now">{{ product.name }}</span>
+  </nav>
+
+  <div class="pd-layout">
+    <!-- Image + gallery -->
+    <div class="pd-gallery">
+      <div class="pd-media">
+        {% if product.badge %}<span class="badge badge-{{ product.badge | lower | replace(' ', '-') }} pd-badge">{{ product.badge }}</span>{% endif %}
+        <img id="pd-main-img" src="{{ img_url(product.image) }}" alt="{{ product.name }}"
+             onerror="this.onerror=null;this.src='/static/images/placeholder.jpg';" />
+      </div>
+      {% if product.images and product.images | length > 1 %}
+      <div class="pd-thumbs">
+        {% for im in product.images %}
+        <button type="button" class="pd-thumb{{ ' active' if loop.first }}"
+                onclick="var m=document.getElementById('pd-main-img');m.src=this.querySelector('img').src;this.parentNode.querySelectorAll('.pd-thumb').forEach(function(t){t.classList.remove('active')});this.classList.add('active');">
+          <img src="{{ img_url(im) }}" alt="{{ product.name }} photo {{ loop.index }}"
+               onerror="this.onerror=null;this.src='/static/images/placeholder.jpg';" />
+        </button>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+
+    <!-- Info -->
+    <div class="pd-info">
+      {% if product.brand %}<div class="pd-brand">{{ product.brand }}</div>{% endif %}
+      <h1 class="pd-title">{{ product.name }}</h1>
+
+      <div class="pd-price-row">
+        {% if product.original_price and product.original_price > product.price %}
+          <span class="price-was lg">${{ '{:,.0f}'.format(product.original_price) }}</span>
+        {% endif %}
+        <span class="pd-price">${{ '{:,.0f}'.format(product.price) }}{% if product.price_max %} – ${{ '{:,.0f}'.format(product.price_max) }}{% endif %}</span>
+        <span class="pd-stock {{ 'in' if product.in_stock else 'out' }}">{{ 'In Stock' if product.in_stock else 'Made To Order' }}</span>
+      </div>
+
+      {% if product.price > 1500 %}
+      <a href="/financing" class="pd-finance">As low as <strong>${{ '{:,.0f}'.format(monthly) }}/mo</strong> ($500 down) — apply for financing &rsaquo;</a>
+      {% endif %}
+
+      {% if chips and chips[0] %}
+      <div class="pd-chips">
+        {% for c in chips %}{% if c.strip() %}<span class="spec-chip lg">{{ c.strip() }}</span>{% endif %}{% endfor %}
+      </div>
+      {% endif %}
+
+      <p class="pd-desc">{{ product.description }}</p>
+
+      <div class="pd-actions">
+        <button class="btn-primary btn-lg" data-add-cart
+                data-slug="{{ product.slug }}" data-name="{{ product.name }}"
+                data-price="{{ product.price }}" data-image="{{ product.image }}">Add to Cart</button>
+        <button class="btn-outline btn-lg" data-quote-open data-product="{{ product.name }}" type="button">Request a Quote</button>
+      </div>
+
+      <ul class="pd-assurances">
+        <li>Ships nationwide — freight quoted to your door</li>
+        <li>Financing available on tower &amp; blind packages</li>
+        <li>Questions? Call <a href="tel:{{ BUSINESS.phone }}">{{ BUSINESS.phone }}</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Specs + features -->
+  <div class="pd-detail-grid">
+    <div class="pd-block">
+      <h2 class="pd-h2">Specifications</h2>
+      <table class="spec-table">
+        <tbody>
+          <tr><th>Brand</th><td>{{ product.brand or '—' }}</td></tr>
+          <tr><th>Category</th><td>{{ category_label }}</td></tr>
+          {% if product.subcategory %}<tr><th>Type</th><td>{{ product.subcategory }}</td></tr>{% endif %}
+          {% if product.model_number %}<tr><th>Size / Configuration</th><td>{{ product.model_number }}</td></tr>{% endif %}
+          <tr><th>Price</th><td>${{ '{:,.0f}'.format(product.price) }}{% if product.price_max %} – ${{ '{:,.0f}'.format(product.price_max) }}{% endif %}</td></tr>
+          <tr><th>Availability</th><td>{{ 'In Stock' if product.in_stock else 'Made To Order' }}</td></tr>
+          <tr><th>Item #</th><td>BLD-{{ '%05d' % product.id }}</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="pd-block">
+      <h2 class="pd-h2">Features</h2>
+      <ul class="feature-list">
+        {% for f in product.features %}
+        <li>{{ f }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+  <!-- Related -->
+  {% if related %}
+  <section class="section section-related">
+    <div class="section-head">
+      <div><div class="section-eyebrow">You May Also Like</div><h2 class="section-title">Related Products</h2></div>
+      <a href="/products?category={{ product.category }}" class="see-all">See all {{ category_label }} &rsaquo;</a>
+    </div>
+    <div class="grid">
+      {% for p in related %}{{ card(p) }}{% endfor %}
+    </div>
+  </section>
+  {% endif %}
+</div>
+{% endblock %}

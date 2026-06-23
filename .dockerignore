@@ -1,0 +1,12 @@
+.env
+*.db
+*.sqlite3
+__pycache__/
+*.pyc
+.git/
+.gitignore
+.venv/
+venv/
+incoming-images/
+IMAGE_AUDIT.md
+image_manifest.csv
