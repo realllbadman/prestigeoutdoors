@@ -548,7 +548,7 @@ CATALOG = [
         "original_price": None,
         "badge":          "Best Seller",
         "in_stock":       True,
-        "images":         ["prod-camo-steel-blind-6x6.jpg"],  # image URLs — add/remove freely; [] = enter later
+        "images":         ["camo-steel-blind-6x6.jpg"],  # image URLs — add/remove freely; [] = enter later
         "description":    "Our most popular hard-sided blind. Welded 6'×6' steel construction in a baked-on camo finish that lasts for decades of hard hunting.",
         "features": [
             "6'×6' footprint, seats 2–4",
