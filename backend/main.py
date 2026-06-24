@@ -213,26 +213,23 @@ def _category_counts(db):
 # --------------------------------------------------------------------------- #
 @app.get("/", response_class=HTMLResponse)
 def home(request: Request, db: Session = Depends(get_db)):
-    featured = []
-    seen = set()
-    for slug in FEATURED_SLUGS:
-        p = db.query(Product).filter(Product.slug == slug).first()
-        if p:
-            featured.append(p)
-            seen.add(p.id)
-    # Fill out a mixed featured grid with best sellers / new across categories.
-    if len(featured) < 8:
-        extras = (
-            db.query(Product)
-            .filter(Product.badge.in_(["Best Seller", "New", "Hot Deal"]))
-            .all()
-        )
-        for p in _interleave_by_category(extras):
-            if p.id not in seen:
-                featured.append(p)
-                seen.add(p.id)
-            if len(featured) >= 8:
-                break
+    # "Best Blinds" grid — a spread of blinds from cheapest to most expensive,
+    # so budget shoppers see affordable options first and premium shoppers see
+    # the high end as they scroll. Sampled evenly across the price range.
+    blinds_asc = (
+        db.query(Product)
+        .filter(Product.category == "deer-blinds-stands", Product.price >= 900)
+        .order_by(Product.price.asc())
+        .all()
+    )
+    n = len(blinds_asc)
+    if n > 8:
+        # evenly sample 8 across the whole range so the cheapest AND the most
+        # expensive both appear, in ascending order.
+        idxs = sorted({round(i * (n - 1) / 7) for i in range(8)})
+        featured = [blinds_asc[i] for i in idxs]
+    else:
+        featured = blinds_asc
 
     # Hero cards favour real product photography (non-placeholder) for visual punch.
     hero_blinds = (
@@ -295,7 +292,7 @@ def products(
     if not (category or subcategory or q):
         results = _interleave_by_category(results)
     else:
-        results = sorted(results, key=lambda p: (p.subcategory, p.price))
+        results = sorted(results, key=lambda p: p.price)   # cheapest → most expensive
 
     context = {
         "products": results,
