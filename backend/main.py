@@ -227,9 +227,23 @@ def home(request: Request, db: Session = Depends(get_db)):
         # evenly sample 8 across the whole range so the cheapest AND the most
         # expensive both appear, in ascending order.
         idxs = sorted({round(i * (n - 1) / 7) for i in range(8)})
-        featured = [blinds_asc[i] for i in idxs]
+        sampled = [blinds_asc[i] for i in idxs]
     else:
-        featured = blinds_asc
+        sampled = blinds_asc
+
+    # Pin the client's 3 TikTok best-sellers to the front of the Best Sellers grid.
+    pinned_slugs = [
+        "grizzly-camo-hunting-blind",
+        "bowhunter-360-6x6",
+        "elevated-blind-5x6-stand-6ft",
+    ]
+    pinned = [
+        p for p in (
+            db.query(Product).filter(Product.slug == s).first() for s in pinned_slugs
+        ) if p
+    ]
+    seen = {p.id for p in pinned}
+    featured = pinned + [p for p in sampled if p.id not in seen]
 
     # Hero cards favour real product photography (non-placeholder) for visual punch.
     hero_blinds = (

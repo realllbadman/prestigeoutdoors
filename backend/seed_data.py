@@ -120,8 +120,77 @@ SLIDER_CHIPS = [
 
 CATALOG = [
     # ===================================================================== #
-    #  DEER BLINDS & STANDS  (38)
+    #  DEER BLINDS & STANDS  (41)
     # ===================================================================== #
+    {
+        "slug":           "grizzly-camo-hunting-blind",
+        "name":           "Grizzly Camo Hunting Blind",
+        "brand":          "Grizzly",
+        "category":       "deer-blinds-stands",
+        "subcategory":    "Ground Blinds",
+        "model_number":   "Ground-level · hard-side · camo shell · lockable door",
+        "price":          600,
+        "price_max":      None,
+        "original_price": None,
+        "badge":          "Best Seller",
+        "in_stock":       True,
+        "images":         [],  # client photo — send URL to localize
+        "description":    "The coolest of the Grizzly blinds — a hard-sided camo hunting blind in a natural branch-and-leaf pattern. Quiet, weatherproof, and ready to hunt. $600 shipped.",
+        "features": [
+            "Hard-side composite shell",
+            "Natural branch & leaf camo finish",
+            "Large tinted hunting window",
+            "Lockable factory door",
+            "Ground-level setup",
+            "$600 shipped",
+        ],
+    },
+    {
+        "slug":           "bowhunter-360-6x6",
+        "name":           "Bowhunter 360 — 6×6 Camo Blind",
+        "brand":          "Coulee Country",
+        "category":       "deer-blinds-stands",
+        "subcategory":    "360° Hunting Blinds",
+        "model_number":   "6×6 · all vertical windows · 360° views · seats 2–4",
+        "price":          550,
+        "price_max":      None,
+        "original_price": None,
+        "badge":          "Best Seller",
+        "in_stock":       True,
+        "images":         [],  # client photo — send URL to localize
+        "description":    "The \"Bowhunter 360\" by Coulee Country. All vertical windows for full draw clearance, 6×6 with plenty of room for the whole family. $550 shipped.",
+        "features": [
+            "6×6 footprint — room for the whole family",
+            "All vertical windows (bow-ready)",
+            "360° field of view",
+            "Full camo wrap",
+            "Built by Coulee Country",
+            "$550 shipped",
+        ],
+    },
+    {
+        "slug":           "elevated-blind-5x6-stand-6ft",
+        "name":           "5×6 Elevated Hunting Blind — 6 ft Stand",
+        "brand":          "Prestige Outdoors",
+        "category":       "deer-blinds-stands",
+        "subcategory":    "Tower Stands",
+        "model_number":   "5×6 · 6 ft stand · staircase · factory door",
+        "price":          600,
+        "price_max":      None,
+        "original_price": None,
+        "badge":          "Best Seller",
+        "in_stock":       True,
+        "images":         [],  # client photo — send URL to localize
+        "description":    "A 5×6 elevated hunting blind with camo tinted windows on a 6 ft stand with staircase and factory door. Roomy and ready — rear windows available on request. $600 shipped.",
+        "features": [
+            "5×6 elevated box blind",
+            "6 ft stand with staircase",
+            "Factory-built door",
+            "Camo tinted windows",
+            "Optional rear windows",
+            "$600 shipped",
+        ],
+    },
     {
         "slug":           "hub-ground-blind-58",
         "name":           "Care Taker Hub Ground Blind 58\"×58\"",
@@ -594,7 +663,7 @@ CATALOG = [
         "original_price": None,
         "badge":          None,
         "in_stock":       True,
-        "images":         ["camo-steel-blind-8x8.jpg"],  # image URLs — add/remove freely; [] = enter later
+        "images":         ["prod-camo-steel-blind-8x8.jpg"],  # image URLs — add/remove freely; [] = enter later
         "description":    "The roomiest steel blind in the yard. Eight-by-eight seats up to six — perfect for outfitters, youth camps, and big family hunts.",
         "features": [
             "8'×8' footprint, seats 4–6",
@@ -732,7 +801,7 @@ CATALOG = [
         "original_price": None,
         "badge":          "Hot Deal",
         "in_stock":       True,
-        "images":         ["tower-blind-wood-5x6-6ft.jpg"],  # image URLs — add/remove freely; [] = enter later
+        "images":         ["prod-tower-blind-wood-5x6-6ft.jpg"],  # image URLs — add/remove freely; [] = enter later
         "description":    "A handsome insulated plywood blind on a 6-foot treated-wood tower. Warm, quiet, and built like a deer-camp cabin.",
         "features": [
             "5'×6' wood blind on 6-ft tower",
