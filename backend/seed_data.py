@@ -157,7 +157,7 @@ CATALOG = [
         "original_price": None,
         "badge":          "Best Seller",
         "in_stock":       True,
-        "images":         [],  # client photo — send URL to localize
+        "images":         ["bowhunter-360-6x6.jpg"],  # client photo — send URL to localize
         "description":    "The \"Bowhunter 360\" by Coulee Country. All vertical windows for full draw clearance, 6×6 with plenty of room for the whole family. $550 shipped.",
         "features": [
             "6×6 footprint — room for the whole family",
