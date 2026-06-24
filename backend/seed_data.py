@@ -226,7 +226,7 @@ CATALOG = [
         "original_price": None,
         "badge":          "Best Seller",
         "in_stock":       True,
-        "images":         ["prod-ground-blind-4x4.jpg"],  # image URLs — add/remove freely; [] = enter later
+        "images":         ["steel-ground-blind-4x4.jpg"],  # image URLs — add/remove freely; [] = enter later
         "description":    "Welded 14-gauge steel ground blind built to live in the field year-round. Whisper-quiet windows and a powder-coated finish that shrugs off weather.",
         "features": [
             "4'×4' footprint, seats 1",
@@ -249,7 +249,7 @@ CATALOG = [
         "original_price": None,
         "badge":          None,
         "in_stock":       True,
-        "images":         ["prod-ground-blind-5x5.jpg"],  # image URLs — add/remove freely; [] = enter later
+        "images":         ["steel-ground-blind-5x5.jpg"],  # image URLs — add/remove freely; [] = enter later
         "description":    "A roomy two-hunter welded steel ground blind. Carpeted, quiet, and weatherproof — ideal for kids, bow hunters, and long sits.",
         "features": [
             "5'×5' footprint, seats 2",
@@ -272,7 +272,7 @@ CATALOG = [
         "original_price": None,
         "badge":          None,
         "in_stock":       True,
-        "images":         ["prod-green-steel-ground-blind-4x4.jpg"],  # image URLs — add/remove freely; [] = enter later
+        "images":         ["green-steel-ground-blind-4x4.jpg"],  # image URLs — add/remove freely; [] = enter later
         "description":    "The 4'×4' welded steel ground blind in a low-glare hunter-green powder coat that blends into evergreen and field edges.",
         "features": [
             "4'×4' footprint, seats 1",
@@ -617,7 +617,7 @@ CATALOG = [
         "original_price": None,
         "badge":          None,
         "in_stock":       True,
-        "images":         ["prod-box-blind-wood-6x6-8ft.jpg"],  # image URLs — add/remove freely; [] = enter later
+        "images":         ["box-blind-wood-6x6-8ft.jpg"],  # image URLs — add/remove freely; [] = enter later
         "description":    "Classic insulated plywood box blind on an 8-foot treated-wood platform. Old-school warmth and a rock-solid sit, ready to hunt out of the crate.",
         "features": [
             "6'×6' blind on 8-ft wood tower",
@@ -732,7 +732,7 @@ CATALOG = [
         "original_price": None,
         "badge":          "Hot Deal",
         "in_stock":       True,
-        "images":         ["prod-tower-blind-wood-5x6-6ft.jpg"],  # image URLs — add/remove freely; [] = enter later
+        "images":         ["tower-blind-wood-5x6-6ft.jpg"],  # image URLs — add/remove freely; [] = enter later
         "description":    "A handsome insulated plywood blind on a 6-foot treated-wood tower. Warm, quiet, and built like a deer-camp cabin.",
         "features": [
             "5'×6' wood blind on 6-ft tower",
