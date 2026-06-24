@@ -39,7 +39,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, "templates")
 STATIC_DIR = os.path.join(BASE_DIR, "static")
 FRONTEND_DIR = os.path.join(BASE_DIR, "frontend")
 
-ASSET_VERSION = "14"  # bump to bust static asset caches
+ASSET_VERSION = "15"  # bump to bust static asset caches
 
 BUSINESS = {
     "name": os.getenv("BUSINESS_NAME", "Deer Blinds & Stands Co"),
