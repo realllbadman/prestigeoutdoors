@@ -45,7 +45,7 @@ BUSINESS = {
     "name": os.getenv("BUSINESS_NAME", "Deer Blinds & Stands Co"),
     "email": os.getenv("BUSINESS_EMAIL", os.getenv("OWNER_EMAIL", "sales@example.com")),
     "phone": os.getenv("OWNER_PHONE", "+1 (555) 123-4567"),
-    "address": os.getenv("BUSINESS_ADDRESS", "1234 Ridgeline Rd, Huntsville, TX 77320"),
+    "address": os.getenv("BUSINESS_ADDRESS", "Searles Valley, CA 93562, USA"),
     "hours": "Mon–Sat 8am–7pm PT · Sun by appointment",
     "free_ship_threshold": 1500,
     "flat_shipping": 14.99,

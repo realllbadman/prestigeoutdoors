@@ -11,7 +11,7 @@ auto-creates + seeds the catalog (80 products) on first boot.
 | `BUSINESS_EMAIL` | `prestigeoutdoorssupply@gmail.com` |
 | `OWNER_EMAIL` | `prestigeoutdoorssupply@gmail.com` |
 | `OWNER_PHONE` | `+1 (213) 218-0651` |
-| `BUSINESS_ADDRESS` | `1180 N Mountain Ave, Ontario, CA 91762` |
+| `BUSINESS_ADDRESS` | `Searles Valley, CA 93562, USA` |
 | `SMTP_HOST` | `smtp.gmail.com` |
 | `SMTP_PORT` | `587` |
 | `SMTP_USER` | `prestigeoutdoorssupply@gmail.com` |
