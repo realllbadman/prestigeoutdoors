@@ -1,6 +1,5 @@
 """FastAPI application: lifespan seeding, no-cache middleware, page routes."""
 import os
-import struct
 from collections import OrderedDict
 from contextlib import asynccontextmanager
 from datetime import datetime
@@ -40,7 +39,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, "templates")
 STATIC_DIR = os.path.join(BASE_DIR, "static")
 FRONTEND_DIR = os.path.join(BASE_DIR, "frontend")
 
-ASSET_VERSION = "16"  # bump to bust static asset caches
+ASSET_VERSION = "17"  # bump to bust static asset caches
 
 BUSINESS = {
     "name": os.getenv("BUSINESS_NAME", "Deer Blinds & Stands Co"),
@@ -90,75 +89,7 @@ jinja_env = Environment(
 )
 templates = Jinja2Templates(env=jinja_env)
 
-_orient_cache: dict = {}
-
-
-def _jpeg_size(f):
-    """Read (w, h) from an open JPEG file by scanning SOF markers."""
-    f.seek(2)  # skip SOI
-    while True:
-        byte = f.read(1)
-        if not byte:
-            return None
-        if byte != b"\xff":
-            continue
-        marker = f.read(1)
-        while marker == b"\xff":  # skip fill bytes
-            marker = f.read(1)
-        if not marker:
-            return None
-        m = marker[0]
-        if m in (0xD8, 0xD9) or 0xD0 <= m <= 0xD7:
-            continue  # standalone markers, no length field
-        ln = f.read(2)
-        if len(ln) < 2:
-            return None
-        seg_len = struct.unpack(">H", ln)[0]
-        if 0xC0 <= m <= 0xCF and m not in (0xC4, 0xC8, 0xCC):
-            data = f.read(5)  # precision(1) + height(2) + width(2)
-            if len(data) < 5:
-                return None
-            h, w = struct.unpack(">HH", data[1:5])
-            return (w, h)
-        f.seek(seg_len - 2, 1)
-
-
-def img_is_portrait(filename) -> bool:
-    """True when the product image is clearly taller than wide (no Pillow dep).
-
-    Tall photos get object-fit:contain + blurred fill so they're never cropped;
-    everything else fills the card edge-to-edge with object-fit:cover.
-    """
-    name = str(filename or "")
-    if not name or name.startswith(("http://", "https://")):
-        return False
-    if name in _orient_cache:
-        return _orient_cache[name]
-    res = False
-    try:
-        with open(os.path.join(STATIC_DIR, "images", name), "rb") as f:
-            sig = f.read(8)
-            if sig[:8] == b"\x89PNG\r\n\x1a\n":
-                f.seek(16)
-                w, h = struct.unpack(">II", f.read(8))
-            elif sig[:6] in (b"GIF87a", b"GIF89a"):
-                f.seek(6)
-                w, h = struct.unpack("<HH", f.read(4))
-            elif sig[:2] == b"\xff\xd8":
-                f.seek(0)
-                wh = _jpeg_size(f)
-                w, h = wh if wh else (1, 1)
-            else:
-                w, h = 1, 1
-        res = h >= w * 1.15  # clearly portrait
-    except Exception:
-        res = False
-    _orient_cache[name] = res
-    return res
-
-
 jinja_env.globals.update(
-    img_is_portrait=img_is_portrait,
     BUSINESS=BUSINESS,
     CATEGORY_LABELS=CATEGORY_LABELS,
     CATEGORY_SUBCATEGORIES=CATEGORY_SUBCATEGORIES,
