@@ -180,7 +180,7 @@ CATALOG = [
         "original_price": None,
         "badge":          "Best Seller",
         "in_stock":       True,
-        "images":         [],  # client photo — send URL to localize
+        "images":         ["elevated-blind-5x6-stand-6ft.jpg"],  # client photo — send URL to localize
         "description":    "A 5×6 elevated hunting blind with camo tinted windows on a 6 ft stand with staircase and factory door. Roomy and ready — rear windows available on request. $600 shipped.",
         "features": [
             "5×6 elevated box blind",
