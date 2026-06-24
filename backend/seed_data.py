@@ -134,7 +134,7 @@ CATALOG = [
         "original_price": None,
         "badge":          "Best Seller",
         "in_stock":       True,
-        "images":         [],  # client photo — send URL to localize
+        "images":         ["grizzly-camo-hunting-blind.png"],  # client photo — send URL to localize
         "description":    "The coolest of the Grizzly blinds — a hard-sided camo hunting blind in a natural branch-and-leaf pattern. Quiet, weatherproof, and ready to hunt. $600 shipped.",
         "features": [
             "Hard-side composite shell",
