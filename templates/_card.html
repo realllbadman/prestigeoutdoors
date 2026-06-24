@@ -3,7 +3,7 @@
 <article class="card reveal" data-category="{{ p.category }}" data-subcategory="{{ p.subcategory }}" data-price="{{ p.price }}">
   <a class="card-overlay-link" href="/products/{{ p.slug }}" aria-label="{{ p.name }}"></a>
 
-  <div class="card-media" style="--card-img:url('{{ img_url(p.image) }}')">
+  <div class="card-media{% if img_is_portrait(p.image) %} is-portrait{% endif %}" style="--card-img:url('{{ img_url(p.image) }}')">
     {% if p.badge %}<span class="badge badge-{{ p.badge | lower | replace(' ', '-') }}">{{ p.badge }}</span>{% endif %}
     {% if not p.in_stock %}<span class="badge badge-out">Sold Out</span>{% endif %}
     <img src="{{ img_url(p.image) }}" alt="{{ p.name }}" loading="lazy"
