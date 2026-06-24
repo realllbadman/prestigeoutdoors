@@ -594,7 +594,7 @@ CATALOG = [
         "original_price": None,
         "badge":          None,
         "in_stock":       True,
-        "images":         ["prod-camo-steel-blind-8x8.jpg"],  # image URLs — add/remove freely; [] = enter later
+        "images":         ["camo-steel-blind-8x8.jpg"],  # image URLs — add/remove freely; [] = enter later
         "description":    "The roomiest steel blind in the yard. Eight-by-eight seats up to six — perfect for outfitters, youth camps, and big family hunts.",
         "features": [
             "8'×8' footprint, seats 4–6",
