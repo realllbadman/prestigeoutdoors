@@ -1999,7 +1999,7 @@ CATALOG = [
         "original_price": None,
         "badge":          "Best Seller",
         "in_stock":       True,
-        "images":         [],  # image URLs — add/remove freely; [] = enter later
+        "images":         ["sportsmans-condo-ridgeline-4x4.jpg"],  # image URLs — add/remove freely; [] = enter later
         "description":    "Maintenance-free fiberglass 4'×4' box blind built to vanish into the timber. Sound-deadening walls and tinted windows keep you hidden and quiet all season.",
         "features": [
             "4'×4' footprint, seats 1–2",
@@ -2022,7 +2022,7 @@ CATALOG = [
         "original_price": None,
         "badge":          None,
         "in_stock":       True,
-        "images":         [],  # image URLs — add/remove freely; [] = enter later
+        "images":         ["ram-650-elite-round.jpg"],  # image URLs — add/remove freely; [] = enter later
         "description":    "Round 6.5' blind with a full 360° band of tinted windows for total visibility while you stay concealed. Roomy enough for two hunters.",
         "features": [
             "6.5' diameter, seats 2",
@@ -2045,7 +2045,7 @@ CATALOG = [
         "original_price": None,
         "badge":          None,
         "in_stock":       True,
-        "images":         [],  # image URLs — add/remove freely; [] = enter later
+        "images":         ["sportsmans-condo-sc1-4x4.jpg"],  # image URLs — add/remove freely; [] = enter later
         "description":    "The classic SC1 one-piece fiberglass 4'×4' — light, quiet, and weatherproof. A proven first blind that lasts for decades.",
         "features": [
             "4'×4' footprint, seats 1–2",
@@ -2068,7 +2068,7 @@ CATALOG = [
         "original_price": None,
         "badge":          "Best Seller",
         "in_stock":       True,
-        "images":         [],  # image URLs — add/remove freely; [] = enter later
+        "images":         ["hughes-clubhouse-4x8.jpg"],  # image URLs — add/remove freely; [] = enter later
         "description":    "Roomy 4'×8' insulated blind that seats the whole crew. Plenty of window coverage for gun or crossbow on any side.",
         "features": [
             "4'×8' footprint, seats 3–4",
@@ -2091,7 +2091,7 @@ CATALOG = [
         "original_price": None,
         "badge":          None,
         "in_stock":       True,
-        "images":         [],  # image URLs — add/remove freely; [] = enter later
+        "images":         ["advantage-whitetail-2person-quadpod.jpg"],  # image URLs — add/remove freely; [] = enter later
         "description":    "Two-person hunting blind packaged with a rock-solid QuadPod tower kit — a complete, ready-to-hunt elevated setup.",
         "features": [
             "Seats 2 hunters",
@@ -2114,7 +2114,7 @@ CATALOG = [
         "original_price": None,
         "badge":          "Best Seller",
         "in_stock":       True,
-        "images":         [],  # image URLs — add/remove freely; [] = enter later
+        "images":         ["sportsmans-condo-sc2-4x6.jpg"],  # image URLs — add/remove freely; [] = enter later
         "description":    "The best-selling SC2 4'×6' fiberglass blind — the sweet spot for size, comfort, and concealment. Seats two to three.",
         "features": [
             "4'×6' footprint, seats 2–3",
@@ -2137,7 +2137,7 @@ CATALOG = [
         "original_price": None,
         "badge":          None,
         "in_stock":       True,
-        "images":         [],  # image URLs — add/remove freely; [] = enter later
+        "images":         ["hughes-lodge-4x8.jpg"],  # image URLs — add/remove freely; [] = enter later
         "description":    "The Lodge gives you a full 4'×8' of insulated, weatherproof room. Big windows on every side for gun or bow.",
         "features": [
             "4'×8' footprint, seats 3–4",
@@ -2160,7 +2160,7 @@ CATALOG = [
         "original_price": None,
         "badge":          None,
         "in_stock":       True,
-        "images":         [],  # image URLs — add/remove freely; [] = enter later
+        "images":         ["sportsmans-condo-sc3.jpg"],  # image URLs — add/remove freely; [] = enter later
         "description":    "The flagship SC3 — a spacious 5.5'×6.5' fiberglass blind for the family or a guide and clients. Quiet, weatherproof, built to last.",
         "features": [
             "5.5'×6.5' footprint, seats 3–4",
@@ -2183,7 +2183,7 @@ CATALOG = [
         "original_price": None,
         "badge":          None,
         "in_stock":       True,
-        "images":         [],  # image URLs — add/remove freely; [] = enter later
+        "images":         ["advantage-5x5-quadpod.jpg"],  # image URLs — add/remove freely; [] = enter later
         "description":    "A 5'×5' hunting blind bundled with the QuadPod tower kit — everything you need to get up and hunting fast.",
         "features": [
             "5'×5' blind, seats 2–3",
@@ -2206,7 +2206,7 @@ CATALOG = [
         "original_price": None,
         "badge":          "New",
         "in_stock":       True,
-        "images":         [],  # image URLs — add/remove freely; [] = enter later
+        "images":         ["sportsmans-condo-crossbow-72.jpg"],  # image URLs — add/remove freely; [] = enter later
         "description":    "A 72\"-round fiberglass blind purpose-built for crossbow hunters — low, wide windows and a full 360° view.",
         "features": [
             "72\" diameter, seats 2",
@@ -2229,7 +2229,7 @@ CATALOG = [
         "original_price": None,
         "badge":          None,
         "in_stock":       True,
-        "images":         [],  # image URLs — add/remove freely; [] = enter later
+        "images":         ["sportsmans-condo-bow-72.jpg"],  # image URLs — add/remove freely; [] = enter later
         "description":    "The Bow Condo's 72\" round shell and tall vertical windows give bowhunters full draw clearance and a 360° view.",
         "features": [
             "72\" diameter, seats 2",
@@ -2252,7 +2252,7 @@ CATALOG = [
         "original_price": None,
         "badge":          "Best Seller",
         "in_stock":       True,
-        "images":         [],  # image URLs — add/remove freely; [] = enter later
+        "images":         ["advantage-5x5-10ft-tower.jpg"],  # image URLs — add/remove freely; [] = enter later
         "description":    "Complete elevated package: a 5'×5' insulated blind on a welded 10-ft steel tower. Gets you above the brush and into the wind.",
         "features": [
             "5'×5' blind, seats 2–3",
@@ -2275,7 +2275,7 @@ CATALOG = [
         "original_price": None,
         "badge":          None,
         "in_stock":       True,
-        "images":         [],  # image URLs — add/remove freely; [] = enter later
+        "images":         ["muddy-striker-4x6.jpg"],  # image URLs — add/remove freely; [] = enter later
         "description":    "Muddy's Striker is a 4'×6' insulated steel box blind — tough, quiet, and sealed against weather and a whitetail's nose.",
         "features": [
             "4'×6' footprint, seats 2–3",
@@ -2298,7 +2298,7 @@ CATALOG = [
         "original_price": None,
         "badge":          None,
         "in_stock":       True,
-        "images":         [],  # image URLs — add/remove freely; [] = enter later
+        "images":         ["advantage-dual-threat-10ft.jpg"],  # image URLs — add/remove freely; [] = enter later
         "description":    "The Dual Threat does it all — gun and bow windows in one blind, mounted on a 10-ft steel tower. One setup for every season.",
         "features": [
             "Gun + bow windows",
@@ -2321,7 +2321,7 @@ CATALOG = [
         "original_price": None,
         "badge":          "New",
         "in_stock":       True,
-        "images":         [],  # image URLs — add/remove freely; [] = enter later
+        "images":         ["orion-6x6-premium.jpg"],  # image URLs — add/remove freely; [] = enter later
         "description":    "Top of the line: Orion's premium 6'×6' insulated blind. Massive room, whisper-quiet windows, and finish built for the long haul.",
         "features": [
             "6'×6' footprint, seats 4",
