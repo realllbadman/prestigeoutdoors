@@ -44,7 +44,7 @@ ASSET_VERSION = "17"  # bump to bust static asset caches
 BUSINESS = {
     "name": os.getenv("BUSINESS_NAME", "Deer Blinds & Stands Co"),
     "email": os.getenv("BUSINESS_EMAIL", os.getenv("OWNER_EMAIL", "sales@example.com")),
-    "phone": os.getenv("OWNER_PHONE", "+1 (555) 123-4567"),
+    "phone": os.getenv("OWNER_PHONE", "+1 (215) 217-8902"),
     "address": os.getenv("BUSINESS_ADDRESS", "Searles Valley, CA 93562, USA"),
     "hours": "Mon–Sat 8am–7pm PT · Sun by appointment",
     "free_ship_threshold": 1500,

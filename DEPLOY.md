@@ -10,7 +10,7 @@ auto-creates + seeds the catalog (80 products) on first boot.
 | `BUSINESS_NAME` | `Prestige Outdoors Supply` |
 | `BUSINESS_EMAIL` | `prestigeoutdoorssupply@gmail.com` |
 | `OWNER_EMAIL` | `prestigeoutdoorssupply@gmail.com` |
-| `OWNER_PHONE` | `+1 (213) 218-0651` |
+| `OWNER_PHONE` | `+1 (215) 217-8902` |
 | `BUSINESS_ADDRESS` | `Searles Valley, CA 93562, USA` |
 | `SMTP_HOST` | `smtp.gmail.com` |
 | `SMTP_PORT` | `587` |
