@@ -1066,7 +1066,7 @@ CATALOG = [
         ],
     },
     # ===================================================================== #
-    #  OPTICS  (6)
+    #  OPTICS  (7)
     # ===================================================================== #
     {
         "slug":           "bushnell-equinox-z2",
@@ -1204,6 +1204,29 @@ CATALOG = [
             "Stadiametric rangefinder",
             "Onboard recording + Wi-Fi",
             "Rugged IP67 housing",
+        ],
+    },
+    {
+        "slug":           "s2-mini-thermal",
+        "name":           "S2 Mini Thermal",
+        "brand":          "",
+        "category":       "optics",
+        "subcategory":    "Spotting Scopes",
+        "model_number":   "S2 Mini · compact thermal · Picatinny QD mount",
+        "price":          699,  # TODO: confirm price with owner
+        "price_max":      None,
+        "original_price": None,
+        "badge":          "New",
+        "in_stock":       True,
+        "images":         ["s2-mini-thermal.jpg", "s2-mini-thermal-2.png"],
+        "description":    "A pocket-size thermal imager that rides on a quick-detach Picatinny mount. Spot heat signatures from hogs, predators and deer in total darkness, fog or brush — then pop it off and use it handheld.",
+        "features": [
+            "Compact, lightweight thermal imager",
+            "Quick-detach Picatinny/Weaver mount",
+            "Top mounting plate for a mini red dot",
+            "Multiple color palettes",
+            "Simple three-button controls",
+            "Works day or night — no light needed",
         ],
     },
     # ===================================================================== #
