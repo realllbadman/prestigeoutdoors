@@ -1213,7 +1213,7 @@ CATALOG = [
         "category":       "optics",
         "subcategory":    "Spotting Scopes",
         "model_number":   "S2 Mini · compact thermal · Picatinny QD mount",
-        "price":          699,  # TODO: confirm price with owner
+        "price":          349,
         "price_max":      None,
         "original_price": None,
         "badge":          "New",
